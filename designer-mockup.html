@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design Your Coaster — The Custom Shop (Mockup)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Great+Vibes&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--cream:#f6f1e7;--ink:#22211f;--muted:#6f675c;--line:#ddd3c0;--accent:#921a1d;--dark:#1d1c1a}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Inter,system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.55}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  .topbar{background:var(--dark);color:#cfc5b2;font-size:13px;padding:10px 0}
+  .topbar .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .topbar .mockup-tag{color:#f6f1e7;background:var(--accent);border-radius:999px;padding:2px 10px;font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+  header.hero{padding:48px 0 32px}
+  .eyebrow{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  h1{font-family:Fraunces,Georgia,serif;font-size:52px;line-height:1.05;margin:10px 0 12px}
+  h1 em{font-style:italic}
+  .lede{font-size:17px;color:var(--muted);max-width:62ch}
+  .price-row{display:flex;gap:16px;align-items:baseline;margin-top:18px;flex-wrap:wrap}
+  .price{font-family:Fraunces,Georgia,serif;font-size:28px}
+  .price-note{font-size:14px;color:var(--muted)}
+  section.designer{padding:24px 0 56px}
+  .designer-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+  .preview-card{background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:24px;text-align:center;position:sticky;top:24px}
+  .preview-stage{position:relative;width:100%;max-width:360px;margin:0 auto}
+  .preview-stage svg{width:100%;height:auto;display:block}
+  .sweep{position:absolute;top:6%;bottom:6%;left:8%;width:3px;background:linear-gradient(180deg,transparent,#ffe9a8 18%,#fff6cf 50%,#ffe9a8 82%,transparent);box-shadow:0 0 18px 4px rgba(255,214,110,.75);opacity:0;pointer-events:none;border-radius:3px}
+  .sweep.go{animation:sweep .9s ease forwards}
+  @keyframes sweep{0%{left:8%;opacity:0}12%{opacity:1}88%{opacity:1}100%{left:89%;opacity:0}}
+  .preview-caption{font-size:13px;color:var(--muted);margin-top:12px}
+  .your-design{font-size:14px;font-weight:600;margin-top:8px}
+  .your-design span{color:var(--accent)}
+  .controls h2{font-family:Fraunces,Georgia,serif;font-size:26px;margin-bottom:6px}
+  .controls .hint{font-size:14px;color:var(--muted);margin-bottom:20px}
+  .field{margin-bottom:20px}
+  .field label{display:block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .field input[type=text]{width:100%;font-family:Inter,system-ui,sans-serif;font-size:17px;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
+  .field input[type=text]:focus{outline:2px solid var(--accent);outline-offset:1px}
+  .chip-row{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:9px 16px;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;color:var(--ink)}
+  .chip:hover{border-color:#b9a98c}
+  .chip.selected{border-color:var(--accent);background:var(--accent);color:#fff}
+  .preset-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .preset{border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:12px;text-align:left;cursor:pointer;font-family:inherit;color:var(--ink)}
+  .preset:hover{border-color:#b9a98c}
+  .preset.selected{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+  .preset b{display:block;font-size:14.5px}
+  .preset span{font-size:12.5px;color:var(--muted)}
+  .btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;font-size:16px;padding:14px 26px;border-radius:10px;border:none;cursor:pointer;font-family:inherit;width:100%;text-align:center}
+  .btn:hover{background:#7a1518}
+  .fineprint{font-size:13px;color:var(--muted);margin-top:12px}
+  .fineprint b{color:var(--ink)}
+  section.how{padding:8px 0 56px}
+  section.how h2{font-family:Fraunces,Georgia,serif;font-size:30px;margin-bottom:20px}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .step{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:20px}
+  .step .n{font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--accent);text-transform:uppercase}
+  .step h3{font-size:17px;margin:6px 0 4px}
+  .step p{font-size:14px;color:var(--muted)}
+  footer{background:var(--dark);color:#b7ad9c;padding:36px 0 44px;font-size:14px}
+  footer .fine{font-size:12.5px;color:#8b8172;margin-top:20px}
+  @media (max-width:860px){
+    h1{font-size:40px}
+    .designer-grid{grid-template-columns:1fr;gap:28px}
+    .preview-card{position:static}
+    .steps{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap"><span>The Custom Shop &middot; Richardson, Texas</span><span class="mockup-tag">Mockup &middot; not the live store</span></div></div>
+
+<header class="hero"><div class="wrap">
+  <span class="eyebrow">Drop 001 &middot; Only 6 Made</span>
+  <h1>Design <em>your</em> coaster.</h1>
+  <p class="lede">Type your words, pick a style, and watch it appear on the slate — the way it will look engraved. When it looks right, order the pack. Same price, same drop rules.</p>
+  <div class="price-row"><span class="price">$50 shipped</span><span class="price-note">Pack of 6 &middot; one shape per pack &middot; 3 round, 3 square</span></div>
+</div></header>
+
+<section class="designer"><div class="wrap"><div class="designer-grid">
+  <div class="preview-card">
+    <div class="preview-stage" id="stage">
+      <svg viewBox="0 0 320 320" role="img" aria-label="Live preview of your coaster design">
+        <defs>
+          <radialGradient id="slate" cx="38%" cy="30%" r="82%">
+            <stop offset="0%" stop-color="#4a4a48"/><stop offset="55%" stop-color="#333231"/><stop offset="100%" stop-color="#1e1d1c"/>
+          </radialGradient>
+        </defs>
+        <circle id="discRound" cx="160" cy="160" r="146" fill="url(#slate)" stroke="#141312" stroke-width="3"/>
+        <rect id="discSquare" x="22" y="22" width="276" height="276" rx="20" fill="url(#slate)" stroke="#141312" stroke-width="3" style="display:none"/>
+        <circle id="ringOuter" cx="160" cy="160" r="118" fill="none" stroke="#e6dfd2" stroke-width="1.4" opacity="0.65" style="display:none"/>
+        <circle id="ringInner" cx="160" cy="160" r="108" fill="none" stroke="#e6dfd2" stroke-width="0.9" opacity="0.4" style="display:none"/>
+        <polygon id="star" points="160,84 168.5,108.6 194.5,109.2 173.6,124.8 181,150 160,136.4 139,150 146.4,124.8 125.5,109.2 151.5,108.6" fill="none" stroke="#e6dfd2" stroke-width="1.8" stroke-linejoin="round" style="display:none"/>
+        <line id="rule" x1="110" y1="182" x2="210" y2="182" stroke="#e6dfd2" stroke-width="1" opacity="0.7" style="display:none"/>
+        <text id="line1" x="160" y="160" text-anchor="middle" font-family="'Great Vibes', cursive" font-size="34" fill="#e6dfd2">This is My</text>
+        <text id="line2" x="160" y="196" text-anchor="middle" font-family="'Great Vibes', cursive" font-size="34" fill="#e6dfd2">Happy Place</text>
+        <text id="line3" x="160" y="222" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" letter-spacing="3" fill="#e6dfd2" style="display:none"></text>
+      </svg>
+      <div class="sweep" id="sweep"></div>
+    </div>
+    <p class="preview-caption">Live preview — your design, as it will look engraved.</p>
+    <p class="your-design" id="summary">Your design: <span>Round pack of 6 &middot; This is My Happy Place (featured) &middot; Script</span></p>
+  </div>
+
+  <div class="controls">
+    <h2>Make it yours</h2>
+    <p class="hint">Everything below updates the slate instantly. When it looks right, order the pack — your design fills in the email.</p>
+
+    <div class="field">
+      <label for="words">Your words</label>
+      <input type="text" id="words" value="This is My Happy Place" maxlength="40" autocomplete="off">
+    </div>
+
+    <div class="field">
+      <label>Start from a style</label>
+      <div class="preset-grid">
+        <button type="button" class="preset selected" data-preset="featured"><b>Featured</b><span>&ldquo;This is My Happy Place&rdquo;</span></button>
+        <button type="button" class="preset" data-preset="family"><b>Family name</b><span>The housewarming standard</span></button>
+        <button type="button" class="preset" data-preset="monogram"><b>Monogram</b><span>One letter, big and plain</span></button>
+        <button type="button" class="preset" data-preset="coords"><b>Home coordinates</b><span>Your place, pinned on slate</span></button>
+        <button type="button" class="preset" data-preset="texas"><b>Texas lone star</b><span>Home Sweet Home</span></button>
+        <button type="button" class="preset" data-preset="custom"><b>Your own text</b><span>Whatever you type above</span></button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Shape</label>
+      <div class="chip-row">
+        <button type="button" class="chip selected" data-shape="Round">Round</button>
+        <button type="button" class="chip" data-shape="Square">Square</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Lettering</label>
+      <div class="chip-row">
+        <button type="button" class="chip selected" data-font="script">Script</button>
+        <button type="button" class="chip" data-font="serif">Classic serif</button>
+        <button type="button" class="chip" data-font="caps">All caps</button>
+      </div>
+    </div>
+
+    <a class="btn" id="orderBtn" href="#">Order this design &mdash; $50</a>
+    <p class="fineprint"><b>Payment first by Venmo or Zelle</b>, then we engrave and ship within 24 hours (except major holidays). Personalized items are final sale. 3 round packs of 6 and 3 square packs of 6 left. Want a proof before engraving? Say so in your order email.</p>
+  </div>
+</div></div></section>
+
+<section class="how"><div class="wrap">
+  <h2>How it works</h2>
+  <div class="steps">
+    <div class="step"><p class="n">01 &middot; Design it</p><h3>You design it here</h3><p>Type your words, pick a style and a shape. What you see on the slate is what gets engraved.</p></div>
+    <div class="step"><p class="n">02 &middot; Order it</p><h3>Email your order</h3><p>One tap opens an email with your exact design already filled in. Pay by Venmo or Zelle, and it&rsquo;s yours.</p></div>
+    <div class="step"><p class="n">03 &middot; We engrave it</p><h3>Laser, seal, ship</h3><p>Engraved on the laser in the garage, sealed by hand, numbered in the order it sells, and shipped within 24 hours.</p></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <p>The Custom Shop &middot; Small-batch laser-engraved goods from a garage shop in Richardson, Texas.</p>
+  <p class="fine">Mockup v1 &middot; Interactive preview only &middot; All sample text is fictional &middot; Drop 001 &middot; Black slate coasters &middot; $50 shipped &middot; Pack of 6</p>
+</div></footer>
+
+<script>
+(function(){
+  var state = {shape:'Round', preset:'featured', font:'script', text:'This is My Happy Place'};
+  var els = {
+    line1: document.getElementById('line1'),
+    line2: document.getElementById('line2'),
+    line3: document.getElementById('line3'),
+    star: document.getElementById('star'),
+    rule: document.getElementById('rule'),
+    ringOuter: document.getElementById('ringOuter'),
+    ringInner: document.getElementById('ringInner'),
+    discRound: document.getElementById('discRound'),
+    discSquare: document.getElementById('discSquare'),
+    words: document.getElementById('words'),
+    summary: document.getElementById('summary').querySelector('span'),
+    orderBtn: document.getElementById('orderBtn'),
+    sweep: document.getElementById('sweep')
+  };
+  var FONTS = {
+    script: {family: "'Great Vibes', cursive", size1: 34, spacing: 0},
+    serif: {family: "Fraunces, Georgia, serif", size1: 26, spacing: 0},
+    caps: {family: "Inter, sans-serif", size1: 20, spacing: 3}
+  };
+  var PRESETS = {
+    featured: {label: 'This is My Happy Place (featured)', text: 'This is My Happy Place', lines: ['This is My', 'Happy Place', ''], font: 'script', star: false, rings: false, rule: false},
+    family: {label: 'Family name — The Miller Family', text: 'The Miller Family', lines: ['The Miller Family', '', 'ANYTOWN · TEXAS'], font: 'script', star: false, rings: false, rule: true},
+    monogram: {label: 'Single monogram — M', text: 'M', lines: ['M', '', ''], font: 'script', star: false, rings: true, rule: false},
+    coords: {label: 'Home coordinates — 30.2747° N, 97.7404° W', text: '30.2747° N, 97.7404° W', lines: ['30.2747° N', '97.7404° W', 'AUSTIN, TEXAS'], font: 'serif', star: false, rings: false, rule: true},
+    texas: {label: 'Texas star — Home Sweet Home', text: 'HOME SWEET HOME', lines: ['', 'HOME SWEET HOME', 'TEXAS'], font: 'caps', star: true, rings: false, rule: false},
+    custom: {label: 'Your own text', text: null, lines: null, font: null, star: false, rings: false, rule: false}
+  };
+  function show(el, on){ el.style.display = on ? '' : 'none'; }
+  function applyFont(el, fontKey, size){
+    var f = FONTS[fontKey];
+    el.setAttribute('font-family', f.family);
+    el.setAttribute('font-size', size);
+    el.setAttribute('letter-spacing', f.spacing);
+  }
+  function sweep(){
+    els.sweep.classList.remove('go');
+    void els.sweep.offsetWidth;
+    els.sweep.classList.add('go');
+  }
+  function render(animate){
+    var p = PRESETS[state.preset];
+    var fontKey = state.font;
+    var text = state.text;
+    var l1 = '', l2 = '', l3 = '';
+    if (p.lines) { l1 = p.lines[0]; l2 = p.lines[1]; l3 = p.lines[2]; }
+    else { l1 = text; }
+    if (fontKey === 'caps') { l1 = l1.toUpperCase(); l2 = l2.toUpperCase(); }
+    if (fontKey === 'monogram' || state.preset === 'monogram') { l1 = (text.trim().charAt(0) || 'M').toUpperCase(); }
+    var y1 = 160, y2 = 196, y3 = 222;
+    if (state.preset === 'family') { y1 = 148; y2 = 196; y3 = 178; }
+    if (state.preset === 'coords') { y1 = 138; y2 = 168; y3 = 196; }
+    if (state.preset === 'texas') { y1 = 160; y2 = 196; y3 = 218; }
+    if (state.preset === 'monogram') { y1 = 200; }
+    if (state.preset === 'featured') { y1 = 150; y2 = 188; }
+    els.line1.textContent = l1; els.line1.setAttribute('y', y1);
+    els.line2.textContent = l2; els.line2.setAttribute('y', y2);
+    els.line3.textContent = l3; els.line3.setAttribute('y', y3);
+    var size1 = (state.preset === 'monogram') ? 110 : FONTS[fontKey].size1;
+    if (state.preset === 'texas') { size1 = 15; }
+    applyFont(els.line1, fontKey, size1);
+    applyFont(els.line2, fontKey, state.preset === 'texas' ? 15 : FONTS[fontKey].size1);
+    els.line3.setAttribute('font-family', 'Inter, sans-serif');
+    els.line3.setAttribute('font-size', 11);
+    els.line3.setAttribute('letter-spacing', 3);
+    show(els.line1, !!l1); show(els.line2, !!l2); show(els.line3, !!l3);
+    show(els.star, p.star); show(els.ringOuter, p.rings); show(els.ringInner, p.rings);
+    show(els.rule, p.rule);
+    show(els.discRound, state.shape === 'Round'); show(els.discSquare, state.shape === 'Square');
+    var fontName = {script: 'Script', serif: 'Classic serif', caps: 'All caps'}[fontKey];
+    var designLabel = (state.preset === 'custom') ? ('Your own text — "' + text + '"') : p.label;
+    els.summary.textContent = state.shape + ' pack of 6 · ' + designLabel + ' · ' + fontName;
+    var subject = 'Order — Drop 001 ' + state.shape + ' pack';
+    var body = "Hi, I'd like to order the Drop 001 " + state.shape.toLowerCase() + " slate coaster pack (pack of 6, $50 shipped).\n\nDesign: " + designLabel + " (" + fontName + ")\nYour exact wording: " + text + "\nProof before engraving (yes/no): \nShipping address: \n\nThanks!";
+    els.orderBtn.href = 'mailto:beardedventurestx@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    if (animate) sweep();
+  }
+  function select(btn, group){
+    document.querySelectorAll('[data-' + group + ']').forEach(function(x){ x.classList.remove('selected'); });
+    btn.classList.add('selected');
+  }
+  document.querySelectorAll('[data-preset]').forEach(function(b){
+    b.addEventListener('click', function(){
+      select(b, 'preset');
+      state.preset = b.getAttribute('data-preset');
+      var p = PRESETS[state.preset];
+      if (p.font) { state.font = p.font; syncFontChips(); }
+      if (p.text) { state.text = p.text; els.words.value = p.text; }
+      render(true);
+    });
+  });
+  document.querySelectorAll('[data-shape]').forEach(function(b){
+    b.addEventListener('click', function(){
+      select(b, 'shape');
+      state.shape = b.getAttribute('data-shape');
+      render(true);
+    });
+  });
+  function syncFontChips(){
+    document.querySelectorAll('[data-font]').forEach(function(x){
+      x.classList.toggle('selected', x.getAttribute('data-font') === state.font);
+    });
+  }
+  document.querySelectorAll('[data-font]').forEach(function(b){
+    b.addEventListener('click', function(){
+      select(b, 'font');
+      state.font = b.getAttribute('data-font');
+      render(true);
+    });
+  });
+  var debounce;
+  els.words.addEventListener('input', function(){
+    state.text = els.words.value;
+    if (state.preset !== 'custom') {
+      state.preset = 'custom';
+      document.querySelectorAll('[data-preset]').forEach(function(x){ x.classList.toggle('selected', x.getAttribute('data-preset') === 'custom'); });
+    }
+    clearTimeout(debounce);
+    debounce = setTimeout(function(){ render(true); }, 350);
+    render(false);
+  });
+  render(false);
+})();
+</script>
+</body>
+</html>
