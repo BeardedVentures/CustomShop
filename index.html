@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Drop 001 — Design Your Coaster · The Custom Shop</title>
-<meta name="description" content="Design your own black slate coaster and watch it appear on the real blank. Pack of 6, $50 shipped.">
+<meta name="description" content="Design your own black slate coaster and watch it appear on the real blank. Pack of 6, $40 + tax, shipped.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Great+Vibes&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -167,7 +167,7 @@
       <h1>Design <em>your</em> coaster.</h1>
       <p class="lede">Black slate coasters, laser-engraved to order. Type your words. Watch them appear on the slate. If you can spell it, it can be engraved.</p>
       <div class="price-row">
-        <span class="price">$50 shipped</span>
+        <span class="price">$40 + tax, shipped</span>
         <span class="price-note">Pack of 6 &middot; one shape per pack</span>
       </div>
       <div class="cta-row">
@@ -223,8 +223,8 @@
             <button type="button" class="chip" data-font="caps">All caps</button>
           </div>
         </div>
-        <a class="btn" id="orderBtn" href="#">Order this design &mdash; $50</a>
-        <p class="fineprint"><b>Payment first by Venmo or Zelle</b>, then we engrave and ship within 24 hours (except major holidays). Personalized items are final sale. Want a proof before engraving? Say so in your order email.</p>
+        <a class="btn" id="orderBtn" href="#">Order this design &mdash; $40 + tax</a>
+        <p class="fineprint"><b>Pay by card at checkout</b> — tax is added at checkout. We engrave and ship within 24 hours (except major holidays). Personalized items are final sale. Want a proof before engraving? Choose it at checkout. Clicking order copies your wording, so you can paste it at checkout.</p>
       </div>
     </div>
   </div>
@@ -338,7 +338,7 @@
     </div>
   </div>
   <div class="wrap">
-    <p class="fine">Drop 001 &middot; Black slate coasters &middot; $50 shipped &middot; Personalized items are final sale &middot; Hand wash, no dishwasher</p>
+    <p class="fine">Drop 001 &middot; Black slate coasters &middot; $40 + tax, shipped &middot; Personalized items are final sale &middot; Hand wash, no dishwasher</p>
   </div>
 </footer>
 
@@ -423,9 +423,8 @@
     var fontName = {script: 'Script', serif: 'Classic serif', caps: 'All caps'}[fontKey];
     var designLabel = (state.preset === 'custom') ? ('Your own text — "' + text + '"') : p.label;
     els.summary.textContent = state.shape + ' pack of 6 · ' + designLabel + ' · ' + fontName;
-    var subject = 'Order — Drop 001 ' + state.shape + ' pack';
-    var body = "Hi, I'd like to order the Drop 001 " + state.shape.toLowerCase() + " slate coaster pack (pack of 6, $50 shipped).\n\nDesign: " + designLabel + " (" + fontName + ")\nYour exact wording: " + text + "\nProof before engraving (yes/no): \nShipping address: \n\nThanks!";
-    els.orderBtn.href = 'mailto:beardedventurestx@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    var CHECKOUT = {Round: 'https://buy.stripe.com/9B6fZhc9o8W816ieqi9bO00', Square: 'https://buy.stripe.com/aFabJ10qG7S4g1ccia9bO01'};
+    els.orderBtn.href = CHECKOUT[state.shape];
     if (animate) sweep();
   }
   function select(btn, group){
@@ -471,6 +470,14 @@
     clearTimeout(debounce);
     debounce = setTimeout(function(){ render(true); }, 350);
     render(false);
+  });
+  els.orderBtn.addEventListener('click', function(){
+    var p = PRESETS[state.preset];
+    var fontName = {script: 'Script', serif: 'Classic serif', caps: 'All caps'}[state.font];
+    var designLabel = (state.preset === 'custom') ? ('Your own text — "' + state.text + '"') : p.label;
+    var wording = (state.preset === 'custom') ? state.text : (p.text || state.text);
+    var copyText = designLabel + ' · ' + fontName + ' · Wording: ' + wording;
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(copyText); }
   });
   render(false);
 })();
